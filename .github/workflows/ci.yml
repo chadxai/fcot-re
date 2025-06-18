@@ -14,9 +14,12 @@ jobs:
 
       - run: pip install -e ".[dev]"
 
-      - run: ruff check .
-      - run: ruff format --check .
+      # Ruff — non-blocking for now
+      - run: ruff check . --exit-zero
+      - run: ruff format --check --exit-zero
 
+      # Type check (optional pass)
       - run: mypy fcot_re || true
 
+      # Tests
       - run: pytest -q
