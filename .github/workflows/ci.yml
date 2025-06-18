@@ -1,0 +1,1 @@
+```yaml\nname: CI\n\non: [push, pull_request]\n\njobs:\n lint-test:\n runs-on: ubuntu-latest\n steps:\n - uses: actions/checkout@v4\n - uses: actions/setup-python@v5\n with:\n python-version: "3.11"\n - run: pip install -e .[dev]\n - run: ruff check .\n - run: ruff format --check .\n - run: mypy fcot_re
